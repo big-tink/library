@@ -1,0 +1,52 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(circle, white, gray 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+h1 {
+    background-color: rgb(134, 36, 36);
+    color: rgb(224, 233, 233);
+    margin: 0;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.bookshelf {
+    margin: 0;
+    height: 80vh;
+    width: 90vw;
+    display: grid;
+    background-image: linear-gradient(217deg, rgba(92, 56, 9, 0.8), rgba(109, 63, 19, 0) 70.71%),
+                      linear-gradient(127deg, rgba(53, 40, 12, 0.8), rgba(75, 50, 3, 0) 70.71%),
+                      linear-gradient(336deg, rgba(105, 75, 11, 0.8), rgba(53, 40, 6, 0) 70.71%);
+    border-radius: 5px;
+    padding: 40px;
+}
+
+.shelves {
+    background-image: linear-gradient(217deg, rgba(92, 56, 9, 0.8), rgba(109, 63, 19, 0) 70.71%),
+                      linear-gradient(127deg, rgba(53, 40, 12, 0.8), rgba(75, 50, 3, 0) 70.71%),
+                      linear-gradient(336deg, rgba(105, 75, 11, 0.8), rgba(53, 40, 6, 0) 70.71%);
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.row1,
+.row2,
+.row3,
+.row4 {
+    background-image: linear-gradient(217deg, rgba(92, 56, 9, 0.8), rgba(109, 63, 19, 0) 70.71%),
+                      linear-gradient(127deg, rgba(53, 40, 12, 0.8), rgba(75, 50, 3, 0) 70.71%),
+                      linear-gradient(336deg, rgba(105, 75, 11, 0.8), rgba(53, 40, 6, 0) 70.71%);
+    display: grid;
+    grid-auto-flow: column;
+}
