@@ -33,6 +33,16 @@ function displayBooks(library) {
 
 displayBooks(myLibrary);
 
+const formButton = document.querySelector('.newBook')
+formButton.addEventListener('click', () => {
+    const x = document.querySelector('form');
+    if (x.style.display === 'none') {
+        x.style.display = 'grid';
+    } else {
+        x.style.display = 'none'
+    }
+})
+
 
 const newBook = new Book('Harry Potter', 'J K Rowling', '542', 'yes');
 console.log(newBook)
