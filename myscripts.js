@@ -4,8 +4,12 @@ const myLibrary = [
     {title: 'I did it, im the best no ones better ever anywhere'}
 ]
 
-function Book() {
-
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.addBookToLibrary = addBookToLibrary(this.title, this.author, this.pages, this.read);
 }
 
 function addBookToLibrary() {
@@ -28,3 +32,7 @@ function displayBooks(library) {
 }
 
 displayBooks(myLibrary);
+
+
+const newBook = new Book('Harry Potter', 'J K Rowling', '542', 'yes');
+console.log(newBook)
