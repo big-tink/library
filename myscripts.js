@@ -17,18 +17,62 @@ function displayBooks(library) {
     while (row1.firstChild) {
         row1.removeChild(row1.firstChild)
     }
+    const row2 = document.querySelector('.row2')
+    while (row2.firstChild) {
+        row2.removeChild(row2.firstChild)
+    }
+    const row3 = document.querySelector('.row3')
+    while (row3.firstChild) {
+        row3.removeChild(row3.firstChild)
+    }   
+    const row4 = document.querySelector('.row4')
+    while (row4.firstChild) {
+        row4.removeChild(row4.firstChild)
+    }
 
-    library.forEach(function(books) {
-        let bookTitle = books.title
-        const row = document.querySelector('.row1')
-        const book = document.createElement('div')
+    library.forEach(function(books, index) {
 
-        book.setAttribute('class', `book`)
-        book.style.backgroundColor = 'rgb(0, 0, 0)'
-        book.textContent = bookTitle;
-
-        row.appendChild(book)
+        if (index < 15) {
+            let bookTitle = books.title
+            const row = document.querySelector('.row1')
+            const book = document.createElement('div')
+            book.setAttribute('class', `book`)
+            book.style.backgroundColor = 'rgb(0, 0, 0)'
+            book.textContent = bookTitle;
+            row.appendChild(book)
+        } else if (index > 14 && index < 30) {
+            let bookTitle = books.title
+            const row = document.querySelector('.row2')
+            const book = document.createElement('div')
+            book.setAttribute('class', `book`)
+            book.style.backgroundColor = 'rgb(0, 0, 0)'
+            book.textContent = bookTitle;
+            row.appendChild(book)
+        } else if (index > 29 && index < 45) {
+            let bookTitle = books.title
+            const row = document.querySelector('.row3')
+            const book = document.createElement('div')
+            book.setAttribute('class', `book`)
+            book.style.backgroundColor = 'rgb(0, 0, 0)'
+            book.textContent = bookTitle;
+            row.appendChild(book)
+        } else if (index > 44 && index < 60) {
+            let bookTitle = books.title
+            const row = document.querySelector('.row4')
+            const book = document.createElement('div')
+            book.setAttribute('class', `book`)
+            book.style.backgroundColor = 'rgb(0, 0, 0)'
+            book.textContent = bookTitle;
+            row.appendChild(book)
+        } 
     })
+    
+    if (library.length > 59) {
+        alert(`Book stored in the array. \n` +
+              `${library.length - 60}` + ` extra books are currently stored.`
+        )
+    }
+
 }
 
 displayBooks(myLibrary);
@@ -49,14 +93,19 @@ submitButton.addEventListener('click', function(event) {
     title = document.querySelector('#title')
     author = document.querySelector('#author')
     pages = document.querySelector('#pages')
-    read = document.querySelector('#read')
-    if (read === 'checked') {
+    checkRead = document.querySelector('#read')
+    if (checkRead.checked === true) {
         read = 'yes'
     } else {
         read = 'no'
     }
+    
     const book = new Book(title.value, author.value, pages.value, read)
     addBookToLibrary(book)
     displayBooks(myLibrary)
-    console.log(myLibrary)
+
+
+    const form = document.querySelector('form')
+    form.style.display = 'none'
+    checkRead.checked = false
 })
