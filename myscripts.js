@@ -1,22 +1,22 @@
-const myLibrary = [
-    {title: 'The Hobbit'},
-    {title: 'The Hunger Games'},
-    {title: 'I did it, im the best no ones better ever anywhere'}
-]
+const myLibrary = []
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.addBookToLibrary = addBookToLibrary(this.title, this.author, this.pages, this.read);
 }
 
-function addBookToLibrary() {
-
+function addBookToLibrary(book) {
+    myLibrary.push(book)
 }
 
 function displayBooks(library) {
+
+    const row1 = document.querySelector('.row1')
+    while (row1.firstChild) {
+        row1.removeChild(row1.firstChild)
+    }
 
     library.forEach(function(books) {
         let bookTitle = books.title
@@ -43,6 +43,20 @@ formButton.addEventListener('click', () => {
     }
 })
 
-
-const newBook = new Book('Harry Potter', 'J K Rowling', '542', 'yes');
-console.log(newBook)
+const submitButton = document.querySelector('.submitBook')
+submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    title = document.querySelector('#title')
+    author = document.querySelector('#author')
+    pages = document.querySelector('#pages')
+    read = document.querySelector('#read')
+    if (read === 'checked') {
+        read = 'yes'
+    } else {
+        read = 'no'
+    }
+    const book = new Book(title.value, author.value, pages.value, read)
+    addBookToLibrary(book)
+    displayBooks(myLibrary)
+    console.log(myLibrary)
+})
