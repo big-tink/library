@@ -39,6 +39,43 @@ h1 {
     margin: 0;
     padding: 30px;
     border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.infoCard {
+    background-color: rgb(245, 245, 220);
+    display: grid;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 10px 10px 0 0;
+    width: clamp(300px, 500px, 20vw);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+}
+
+p.title {
+    grid-row: 2/3;
+}
+
+p.author {
+    grid-row: 3/4;
+}
+
+p.pages {
+    grid-row: 4/5;
+}
+
+p.read {
+    grid-row: 5/6;
 }
 
 .bookshelf {
@@ -85,6 +122,7 @@ h1 {
     justify-content: center;
     align-items: center;
     letter-spacing: 3px;
+    position: relative;
 }
 
 form {
@@ -120,4 +158,15 @@ form {
 
 .submitBook:active {
     background-color: rgb(53, 40, 14);
+}
+
+.book .removeButton {
+    background-color: rgb(94, 14, 14);
+    position: absolute;
+    top: 0;
+    right: 0;
+    outline: none;
+    border: 0;
+    padding: 0;
+    writing-mode: horizontal-tb;
 }

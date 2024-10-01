@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Javascript Library</title>
     <link rel="stylesheet" href="style.css">
     <script src="myscripts.js" defer></script>
 </head>
@@ -14,6 +14,13 @@
     <div class="topShelf">
         <button class="newBook">New Book</button>
         <h1>My Javascript Bookshelf</h1>
+        <div class="infoCard">
+            <p></p>
+            <p class="title"></p>
+            <p class="author"></p>
+            <p class="pages"></p>
+            <p class="read"></p>
+        </div>
     </div>
 
     <div class="bookshelf">
@@ -47,7 +54,7 @@
                 <label for="read">Have you read this book?</label>
                 <input type="checkbox" id="read" name="read">Yes
             </section>
-            <button type="submit" class="submitBook">Add Book to Library</button>
+            <button type="submit" class="submitBook" value="Submit">Add Book to Library</button>
 
     </form>
     
