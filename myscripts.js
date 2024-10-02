@@ -31,6 +31,8 @@ function displayBooks(library) {
     }
 
     library.forEach(function(books, index) {
+
+
     
         if (index < 15) {
             const row = document.querySelector('.row1')
@@ -87,10 +89,21 @@ function removeBook(event) {
 
 function createBook(books, index, row) {
     let bookTitle = books.title
+    const redDark = Math.floor(Math.random() * (60) + 1)
+    const greenDark = Math.floor(Math.random() * (60) + 1)
+    const blueDark = Math.floor(Math.random() * (60) + 1)
+    const redLight = Math.floor(Math.random() * (150 - 100) + 100)
+    const greenLight = Math.floor(Math.random() * (150 - 100) + 100)
+    const blueLight = Math.floor(Math.random() * (150 - 100) + 100)
+    const height = Math.floor(Math.random() * (200 - 150) + 150)
+
     const book = document.createElement('div')
     book.setAttribute('class', `book`)
     book.setAttribute('data-index', `${index}`)
-    book.style.backgroundColor = 'rgb(0, 0, 0)'
+    book.style.backgroundImage = `linear-gradient(90deg, rgb(${redDark}, ${greenDark}, ${blueDark}),
+    rgb(${redLight}, ${greenLight}, ${blueLight}) 15%,
+    rgb(${redDark}, ${greenDark}, ${blueDark}) 80%)`
+    book.style.height = `${height}px`
     book.textContent = bookTitle;
 
     const removeButton = document.createElement('button')
@@ -100,7 +113,6 @@ function createBook(books, index, row) {
 
     row.appendChild(book)
     book.appendChild(removeButton)
-
 }
 
 function clearForm() {
