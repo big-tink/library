@@ -63,6 +63,10 @@ function displayBooks(library) {
         displayedBook.addEventListener('click', displayInfo)
     })
 
+    document.querySelectorAll('.changeReadButton').forEach(changeButton => {
+        changeButton.addEventListener('click', changeRead)
+    })
+
 }
 
 function displayInfo(event) {
@@ -85,6 +89,22 @@ function removeBook(event) {
     const index = event.target.getAttribute('data-index')
     myLibrary.splice(index, 1)
     displayBooks(myLibrary)
+}
+
+function changeRead(event) {
+    const index = event.target.getAttribute('data-index')
+    const object = myLibrary[index]
+
+    if (object.read === 'yes') {
+        object.read = 'no'
+        event.target.style.backgroundColor = 'rgb(117, 37, 15)'
+        return object.read
+    } else if (object.read === 'no') {
+        object.read = 'yes'
+        event.target.style.backgroundColor = 'rgb(15, 117, 37)'
+        return object.read
+    }
+
 }
 
 function createBook(books, index, row) {
@@ -111,8 +131,18 @@ function createBook(books, index, row) {
     removeButton.setAttribute('data-index', `${index}`)
     removeButton.textContent = 'X'
 
+    const changeReadButton = document.createElement('button')
+    changeReadButton.setAttribute('class', 'changeReadButton')
+    changeReadButton.setAttribute('data-index', `${index}`)
+    if (myLibrary[index].read === 'yes') {
+        changeReadButton.style.backgroundColor = 'rgb(15, 117, 37)'
+    } else {
+        changeReadButton.style.backgroundColor = 'rgb(117, 37, 15)'
+    }
+
     row.appendChild(book)
     book.appendChild(removeButton)
+    book.appendChild(changeReadButton)
 }
 
 function clearForm() {
@@ -127,7 +157,7 @@ function clearForm() {
     author.value = ''
     pages.value = ''
     checkRead.checked = false
-    // form.style.display = 'none'
+    form.style.display = 'none'
 
 }
 
@@ -156,10 +186,10 @@ submitButton.addEventListener('click', function(event) {
         read = 'no'
     }
 
-    // if (title.value === '' || author.value === '' || pages.value === '') {
-    //     alert('Please fill out all fields!')
-    //     return false
-    // }
+    if (title.value === '' || author.value === '' || pages.value === '') {
+        alert('Please complete all fields!')
+        return false
+    }
 
     const book = new Book(title.value, author.value, pages.value, read)
     addBookToLibrary(book)
@@ -168,4 +198,10 @@ submitButton.addEventListener('click', function(event) {
 
 })
 
-
+Book.prototype.changeRead = function() {
+    if (this.read === 'yes') {
+        this.read = 'no'
+    } else if (this.read === 'no') {
+        this.read = 'yes'
+    }
+}
